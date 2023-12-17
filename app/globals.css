@@ -3,14 +3,10 @@
 @tailwind utilities;
 
 .bg-color{
-  background: linear-gradient(to bottom,#00F444,#00601B);
+  background: linear-gradient(to bottom,#00290C,#00601B);
 }
 .input {
   @apply w-full p-3 rounded-3xl bg-transparent text-white mt-5 border-2 border-white focus:outline-none placeholder:text-white placeholder:text-opacity-50
-}
-
-.button {
-  @apply p-3 text-white bg-orange-950 font-semibold rounded-xl mt-5 font-serif hover:bg-green-950
 }
 
 .primary-bg {
@@ -20,12 +16,7 @@
 input:checked {
   background-color: green;
 }
-.login{
-  background: url("/images/bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .l-button{
   background-color: #C00000;
-  @apply text-white p-3 rounded-3xl
+  @apply text-white p-3 rounded-3xl shadow-md
 }

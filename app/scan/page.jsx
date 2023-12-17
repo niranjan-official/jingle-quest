@@ -110,8 +110,8 @@ const Scan = () => {
                 <input
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  type="text"
-                  className="w-full h-full focus:outline-none bg-transparent border-b-2 mb-1 text-4xl p-2 border-b-white"
+                  type="password"
+                  className="w-full h-full text-center focus:outline-none bg-transparent border-b-2 mb-1 text-4xl p-2 border-b-white"
                 />
               </div>
               <button
