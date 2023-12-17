@@ -31,7 +31,7 @@ const handleData = async (email) => {
   const newPath = userData.path
 
   // If user completed the game, then goto completion page and obtain completion time
-  if (userData[newPath[9]] === true) {
+  if (userData[newPath[3]] === true) {
     try {
       const washingtonRef = doc(db, "users", email);
       const endTime = new Date().getTime()
@@ -49,7 +49,7 @@ const handleData = async (email) => {
     }
   }
   // To find the current pathway level and the particular hint
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 4; i++) {
     let c = newPath[i];
     if (userData[c] === false) {
       const hint = await getData("hint", c);
@@ -60,28 +60,28 @@ const handleData = async (email) => {
 }
 
 // To fetch random question for the particular path
-const handleQuestion = async (User) => {
-  try {
-    const userData = await getData("users", User.email);
-    const newPath = userData.path
-    for (let i = 0; i < 10; i++) {
-      let c = newPath[i];
-      if (userData[c] === false){
-        const question = await getData("Questions", c);
-        const randomIndex = Math.floor(Math.random() * 3) + 1;
-        const obj = { question: question[randomIndex], answer: question[`${randomIndex}a`], userName: userData.name };
-        return obj;
-      }
-    }
-    }catch (err) {
-      alert("Something went Wrong, Try Again!!");
-    }
-  }
+// const handleQuestion = async (User) => {
+//   try {
+//     const userData = await getData("users", User.email);
+//     const newPath = userData.path
+//     for (let i = 0; i < 10; i++) {
+//       let c = newPath[i];
+//       if (userData[c] === false){
+//         const question = await getData("Questions", c);
+//         const randomIndex = Math.floor(Math.random() * 3) + 1;
+//         const obj = { question: question[randomIndex], answer: question[`${randomIndex}a`], userName: userData.name };
+//         return obj;
+//       }
+//     }
+//     }catch (err) {
+//       alert("Something went Wrong, Try Again!!");
+//     }
+//   }
 // To update firebase data if question is answered correctly
 const handleQuestionSubmit = async (User) => {
     const userData = await getData("users", User.email);
     const newPath = userData.path
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 4; i++) {
       let c = newPath[i];
       if (userData[c] === false) {
         try {
@@ -106,4 +106,4 @@ const handleQuestionSubmit = async (User) => {
       return false;
     }
   }
-  export { getData, shuffle, handleData, handleQuestion, handleQuestionSubmit, checkUserPath }
+  export { getData, shuffle, handleData, handleQuestionSubmit, checkUserPath }

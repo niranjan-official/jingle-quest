@@ -4,15 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB3pstZvq7Gl4WDBF_XNCeLwCmozgD1BtU",
-  authDomain: "treasure-hunt-eff8a.firebaseapp.com",
-  projectId: "treasure-hunt-eff8a",
-  storageBucket: "treasure-hunt-eff8a.appspot.com",
-  messagingSenderId: "351928709608",
-  appId: "1:351928709608:web:2418a8b4e223ffb422345d",
-  measurementId: "G-06L5LT861Q"
+  apiKey: "AIzaSyB9Cy3su5Evl5FhQmsAoZsrZD7tfinC-wo",
+  authDomain: "jinglequest-cdc1c.firebaseapp.com",
+  projectId: "jinglequest-cdc1c",
+  storageBucket: "jinglequest-cdc1c.appspot.com",
+  messagingSenderId: "1089450906826",
+  appId: "1:1089450906826:web:c3e0be2fa238ca4f51d033"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

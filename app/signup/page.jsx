@@ -7,7 +7,7 @@ import { auth, db } from '@/firebase/config';
 import { doc, setDoc } from 'firebase/firestore';
 import { useGlobalContext } from '../context';
 import Loading from '../../components/loading';
-import frame from '../../public/images/frame.svg'
+import wrap from '../../public/images/wrap.svg'
 import Image from 'next/image';
 
 export default function Signup() {
@@ -32,12 +32,12 @@ export default function Signup() {
                     b: false,
                     c: false,
                     d: false,
-                    e: false,
-                    f: false,
-                    g: false,
-                    h: false,
-                    i: false,
-                    j: false,
+                    // e: false,
+                    // f: false,
+                    // g: false,
+                    // h: false,
+                    // i: false,
+                    // j: false,
                     path: [],
                     startTime: new Date(),
                     endTime: new Date(),
@@ -57,24 +57,18 @@ export default function Signup() {
     }
     if (!load) {
         return (
-            <div className='h-screen primary-bg login justify-center items-center'>
-                <div className='p-8 flex flex-col items-center rounded-md  '>
-                    <h1 className='mb-2 text-5xl font-serif font-bold text-orange-950'>Sign up</h1>
-                    <input value={name} className='input' onChange={(e) => setName(e.target.value)} type="text" placeholder='Username' />
+            <div className='h-screen primary-bg bg-color items-center'>
+                <div className='w-full h-auto'>
+                    <Image src={wrap} width={0} height={0} alt='trophy' style={{ height: "100%", width: "100%" }} />
+                </div>
+                <div className='w-full p-8 flex flex-col items-center text-white'>
+                    <h1 className='mb-2 text-5xl font-serif font-bold '>SIGN UP</h1>
+                    <input value={name} className='input' onChange={(e) => setName(e.target.value)} type="text" placeholder='Team Name' />
                     <input value={email} className='input' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
                     <input value={password} className='input' onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Password' />
-                    <div className="flex w-full justify-between text-xs mt-4 text-orange-950">
-                        <div className='flex'>
-                            <input type="checkbox" className='bg-orange-950' />
-                            <span className='ml-1 text-orange-950'>remember me</span>
-                        </div>
-                        <Link href="/login" className='cursor-pointer ml-8 text-orange-950'>Already have an account?</Link>
-                    </div>
-                    <button onClick={handleSubmit} className='button'>SIGNUP</button>
+                    <button onClick={handleSubmit} className='l-button rounded-3xl w-1/2 mt-6'>GET IN</button>
+                        <Link href="/login" className='cursor-pointer mt-5'>Already have an account?</Link>
                 </div>
-                {/* <div className='w-full h-2/5 p-2 absolute -bottom-14'>
-                    <Image src={frame} width={0} height={0} alt='trophy' style={{ height: "100%", width: "100%" }} />
-                </div> */}
             </div>
         )
     } else {
