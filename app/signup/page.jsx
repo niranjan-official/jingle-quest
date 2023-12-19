@@ -36,6 +36,7 @@ export default function Signup() {
           // h: false,
           // i: false,
           // j: false,
+          qr: false,
           path: [],
           startTime: new Date(),
           endTime: new Date(),

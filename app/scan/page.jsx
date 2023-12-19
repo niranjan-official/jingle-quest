@@ -16,11 +16,9 @@ const Scan = () => {
   const [hint, setHint] = useState({});
   const { load, setLoad } = useGlobalContext();
   const [answer, setAnswer] = useState("");
-  const [wrongAns, setWrongAns] = useState(0);
   const User = useAuth();
 
   const fetchData = async () => {
-    setWrongAns(0);
     setLoad(true);
     const obj = await handleData(User.email);
     if (!obj.StartTime) {
@@ -32,8 +30,13 @@ const Scan = () => {
       });
       setLoad(false);
     } else {
-      alert("Game completed !!!");
-      router.push("/completion");
+      if(obj.check){
+        router.push("/completion");
+      }else{
+        setLoad(true);
+        router.push("/check");
+      }
+      
     }
   };
   useEffect(() => {
@@ -54,31 +57,7 @@ const Scan = () => {
         alert("Got Error");
       }
     } else {
-      if (wrongAns == 2) {
-        alert(
-          "Answered wrong 3 times... sorry your game is going to restart!!"
-        );
-        setLoad(true);
-        const path = await shuffle("abcd");
-        const array = path.split("");
-        const washingtonRef = doc(db, "users", User.email);
-        await updateDoc(washingtonRef, {
-          path: array,
-          a: false,
-          b: false,
-          c: false,
-          d: false,
-        })
-          .then(() => {
-            fetchData();
-          })
-          .catch((err) => {
-            alert(err.message);
-          });
-      } else {
-        alert(`Wrong !! ${2 - wrongAns} attempts left`);
-        setWrongAns((prevCount) => prevCount + 1);
-      }
+      alert("Wrong !!!");
     }
     setAnswer("");
   };
@@ -120,7 +99,6 @@ const Scan = () => {
               >
                 Submit
               </button>
-              <h2 className="mt-3">{3 - wrongAns} attempts left !!</h2>
             </div>
           </div>
           {/* <h1 className='text-2xl bg-orange-100 p-1 rounded-lg shadow-inner shadow-orange-950 text-orange-950 absolute left-3 top-16 font-serif'>Level: {hint.level}</h1> */}

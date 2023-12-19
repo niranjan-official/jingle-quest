@@ -29,23 +29,25 @@ const handleData = async (email) => {
   // const hint = await getData("Questions", "hint");
   const userData = await getData("users", email);
   const newPath = userData.path
+  const check = userData.qr;
 
   // If user completed the game, then goto completion page and obtain completion time
   if (userData[newPath[3]] === true) {
     try {
-      const washingtonRef = doc(db, "users", email);
-      const endTime = new Date().getTime()
-      const startTime = userData.startTime.seconds
-      const totalTime = (endTime / 1000) - startTime;
-      await updateDoc(washingtonRef, {
-        endTime: endTime,
-        completionTime: totalTime
-      })
-      const obj = { Name: userData.name, Email: email, StartTime: startTime, EndTime: (endTime / 1000), CompletionTime: totalTime }
-      return obj;
+      if(check){
+        const washingtonRef = doc(db, "users", email);
+        const endTime = new Date().getTime()
+        const startTime = userData.startTime.seconds
+        const totalTime = (endTime / 1000) - startTime;
+        await updateDoc(washingtonRef, {
+          endTime: endTime,
+          completionTime: totalTime
+        })
+      }
+      return {check:check,StartTime: 123};
     }
     catch (err) {
-      return { hint: "Not available", level: "Cant find" }
+      return { hint: "Not available", level: "Cant find",check:check,StartTime: 123}
     }
   }
   // To find the current pathway level and the particular hint
@@ -53,7 +55,7 @@ const handleData = async (email) => {
     let c = newPath[i];
     if (userData[c] === false) {
       const hint = await getData("hint", c);
-      const obj = { hint: hint, level: i + 1, userName: userData.name }
+      const obj = { hint: hint, level: i + 1, userName: userData.name}
       return obj;
     }
   }
@@ -106,4 +108,18 @@ const handleQuestionSubmit = async (User) => {
       return false;
     }
   }
-  export { getData, shuffle, handleData, handleQuestionSubmit, checkUserPath }
+  const handleCompletion = async(email)=>{
+
+        const washingtonRef = doc(db, "users", email);
+        const userData = await getData("users", email);
+
+        const endTime = new Date().getTime()
+        const startTime = userData.startTime.seconds
+        const totalTime = (endTime / 1000) - startTime;
+        await updateDoc(washingtonRef, {
+          endTime: endTime,
+          completionTime: totalTime
+        })
+  }
+
+  export { getData, shuffle, handleData, handleQuestionSubmit, checkUserPath,handleCompletion }
