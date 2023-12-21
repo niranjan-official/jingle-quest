@@ -69,7 +69,9 @@ const Scan = () => {
         <div className=" bg-color min-h-max flex flex-col text-white">
           <Header UserName={hint.userName} />
           <div className="h-full primary-bg p-3">
-            <div className="w-full h-14 mt-20 border-2 border-white rounded-xl"></div>
+            <div className="w-full h-14 mt-20 flex justify-center items-center text-3xl rounded-xl">
+              Level: {hint.level}
+            </div>
             <div className="w-full h-2/5 p-2 pt-5">
               <Image
                 src={box}

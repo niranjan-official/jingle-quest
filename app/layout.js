@@ -5,8 +5,8 @@ import { UserDetails } from './context'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Treasure Hunt',
-  description: 'Qr treasure hunt for protek 2023',
+  title: 'Jingle Quest',
+  description: 'Jingle Quest Christmas 2k23',
 }
 
 export default function RootLayout({ children }) {

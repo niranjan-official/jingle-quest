@@ -30,12 +30,12 @@ export default function Signup() {
           b: false,
           c: false,
           d: false,
-          // e: false,
-          // f: false,
-          // g: false,
-          // h: false,
-          // i: false,
-          // j: false,
+          e: false,
+          f: false,
+          g: false,
+          h: false,
+          i: false,
+          j: false,
           qr: false,
           path: [],
           startTime: new Date(),
@@ -91,6 +91,9 @@ export default function Signup() {
               type="password"
               placeholder="Password"
             />
+            <div className="w-full">
+            <span className="mt-3 ml-2">*minimum 6 characters</span>
+            </div>
             <button
               onClick={handleSubmit}
               className="l-button rounded-3xl w-1/2 mt-6"

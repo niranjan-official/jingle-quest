@@ -34,7 +34,7 @@ const Instruction = () => {
   }, [User])
 
   const handleStart = async () => {
-    const path = await shuffle("abcd");
+    const path = await shuffle("abcdefghij");
     const array = path.split('');
     setLoad(true)
     const washingtonRef = doc(db, "users", User.email);
@@ -65,12 +65,10 @@ const Instruction = () => {
             </div>
             
             <div className='text-xs '>
-              <h5 className='mt-4'>• Use the QR code scanner to scan QR codes placed around the campus.
-                Pay attention to the instructions or content provided when scanning QR codes.</h5>
+              <h5 className='mt-4'>• Strictly obey and follow the instructions provided by the volunteers for each game. Decisions taken by the volunteers will be final.</h5>
 
 
-              <h5 className='mt-4'>• Each team will have a unique set of QR code locations to visit.
-                Stick to your designated pathway and don't deviate.</h5>
+              <h5 className='mt-4'>• Each team will be monitored by the volunteers and if any team exceeds more than 4 members in it will be strictly disqualified.</h5>
 
 
               <h5 className='mt-4'>• Time is of the essence. The team that completes the hunt in the shortest time wins.
@@ -83,7 +81,7 @@ const Instruction = () => {
               <h5 className='mt-4'>• Keep the answers within your team. Let other teams enjoy the challenge without spoilers.</h5>
 
 
-              <h5 className='mt-4'>• Dont displace or manipulate the qr codes. They are strategically placed for a fair and challenging game.</h5>
+              <h5 className='mt-4'>• Dont displace or manipulate the game materials. They are strategically placed for a fair and challenging game.</h5>
 
 
             </div>

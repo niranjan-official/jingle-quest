@@ -32,7 +32,7 @@ const handleData = async (email) => {
   const check = userData.qr;
 
   // If user completed the game, then goto completion page and obtain completion time
-  if (userData[newPath[3]] === true) {
+  if (userData[newPath[9]] === true) {
     try {
       if(check){
         const washingtonRef = doc(db, "users", email);
@@ -51,7 +51,7 @@ const handleData = async (email) => {
     }
   }
   // To find the current pathway level and the particular hint
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 10; i++) {
     let c = newPath[i];
     if (userData[c] === false) {
       const hint = await getData("hint", c);
@@ -83,7 +83,7 @@ const handleData = async (email) => {
 const handleQuestionSubmit = async (User) => {
     const userData = await getData("users", User.email);
     const newPath = userData.path
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 10; i++) {
       let c = newPath[i];
       if (userData[c] === false) {
         try {
