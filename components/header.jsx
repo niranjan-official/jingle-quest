@@ -4,12 +4,12 @@ import { useRouter } from 'next/navigation';
 
 const Header = ({ UserName }) => {
 
-    const Router = useRouter();
+    const router = useRouter();
     const handleLogout = () => {
         console.log("Called");
         const auth = getAuth();
         signOut(auth).then(() => {
-            Router.push("/login")
+            router.push("/login")
         }).catch((error) => {
             alert("Logging out failed !!!, Try Again");
         });
