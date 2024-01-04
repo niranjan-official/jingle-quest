@@ -13,7 +13,7 @@ Welcome to the Treasure Hunt Website! This interactive web application is design
 
 ## About the Website
 
-The Treasure Hunt Website is built using Next.js, providing a seamless and responsive user interface. Firebase is used for user authentication and as the database, ensuring secure and efficient data handling.
+The Treasure Hunt Website is built using Next.js (App router), providing a seamless and responsive user interface. Firebase is used for user authentication and as the database, ensuring secure and efficient data handling.
 
 ### Pages
 
@@ -32,7 +32,7 @@ To run the Treasure Hunt Website locally on your machine, follow these steps:
 1. Clone the repository:
 
 ```bash
-https://github.com/niranjan-official/jingle-quest.git
+git clone https://github.com/niranjan-official/jingle-quest.git
 ```
 
 2. Navigate to the project directory:
